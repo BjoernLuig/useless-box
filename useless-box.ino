@@ -1,7 +1,5 @@
 #include <Servo.h>
 
-
-
 int pinDeckel = 9;
 int pinPfote = 6;
 //Pin 5 doesnt work
@@ -15,15 +13,11 @@ int maxDeckel = 70;
 int minPfote = 0;
 int maxPfote = 155;
 
-
-
 void setup() {
   Serial.begin(9600);
   Serial.println("Setup ");
   pinMode(pinLever,INPUT_PULLUP);
 }
-
-
 
 void loop() {
   if(digitalRead(pinLever) == LOW) {
@@ -34,18 +28,18 @@ void loop() {
   delay(1000);
 }
 
-
-
 void openDeckel() {
   servoDeckel.attach(pinDeckel);
   servoDeckel.write(maxDeckel);
   delay(200);
 }
+
 void closeDeckel() {
   servoDeckel.write(minDeckel);
   delay(300);
   servoDeckel.detach();
 }
+
 void openDeckelSlow() {
   servoDeckel.attach(pinDeckel);
   for(int i = minDeckel; i <= maxDeckel; i++) {
@@ -53,6 +47,7 @@ void openDeckelSlow() {
     delay(30);
   }
 }
+
 void closeDeckelSlow() {
   for(int i = maxDeckel; i >= minDeckel; i--) {
     servoDeckel.write(i);
@@ -60,6 +55,7 @@ void closeDeckelSlow() {
   }
   servoDeckel.detach();
 }
+
 void fakeDeckel() {
   servoDeckel.attach(pinDeckel);
   servoDeckel.write((maxDeckel+minDeckel)/2);
@@ -69,18 +65,18 @@ void fakeDeckel() {
   servoDeckel.detach();
 }
 
-
-
 void openPfote() {
   servoPfote.attach(pinPfote);
   servoPfote.write(maxPfote);
   delay(300);
 }
+
 void closePfote() {
   servoPfote.write(minPfote);
   delay(300);
   servoPfote.detach();
 }
+
 void fakePfote() {
   servoPfote.attach(pinPfote);
   servoPfote.write((maxPfote+minPfote)/2);
@@ -88,9 +84,7 @@ void fakePfote() {
   servoPfote.write(minPfote);
   delay(300);
   servoPfote.detach();
-  }
-
-
+}
 
 void action() {
   n = random(numberActions);  // random n
