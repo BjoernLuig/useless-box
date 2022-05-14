@@ -1,6 +1,6 @@
 # useless-box
 
-A useless box wich turns itself of, after you turn it on.
+A useless box wich turns itself off, after you turn it on.
 
 https://user-images.githubusercontent.com/82896177/121791379-91de1000-cbe9-11eb-8be4-e69f9ffe9cc8.mp4
 
